@@ -247,6 +247,8 @@ const Header = () => {
 
               Notiflix.Loading.standard("Payment Processing");
 
+              window.open("https://buy.stripe.com/test_bIYeWK5inb863U4aEE", "_blank");
+
               await axios.post(getUrl("addOrder"), {
                 cart: localStorage.getItem("cart"),
                 user: getUserData().id,
