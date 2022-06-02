@@ -10,7 +10,7 @@ router.post("/", async(req, resp) => {
         if (error)
             return resp.status(400).send({ message: error.details[0].message });
 
-        const user = await User.findOne({ nic: req.body.nic });
+        const user = await User.findOne({ email: req.body.email });
 
         if (!user) return resp.status(401).send({ message: "Invalid credentails" });
 
@@ -42,7 +42,7 @@ router.post("/", async(req, resp) => {
 
 const validate = (data) => {
     const schema = Joi.object({
-        nic: Joi.string().required().label("NIC"),
+        email: Joi.string().required().label("Email"),
         password: Joi.string().required().label("Password"),
     });
 

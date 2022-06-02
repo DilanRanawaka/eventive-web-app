@@ -37,11 +37,11 @@ router.post("/add", async(req, resp) => {
         const data = await User.findOne({ _id: req.body.user });
 
         if (data) {
-            SendMail(data.email, "Order", "Your order (" + ref + ") of total (LKR " + req.body.total + ") has been recieved and deliever with in 7 days ")
+            SendMail(data.email, "Appointment", "Your appointment (" + ref + ") of total (LKR " + req.body.total + ") has been recieved. Thank you")
         }
 
 
-        return resp.status(200).send({ message: "Order Recieved" });
+        return resp.status(200).send({ message: "Appointment Recieved" });
     } catch (error) {
         return resp.status(500).send({ message: error.message });
     }
