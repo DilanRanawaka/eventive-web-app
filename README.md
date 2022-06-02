@@ -1,4 +1,4 @@
-# MERN-Events-2022-04
+# MERN-Eventive
 
 Developed By MERN Framework
 
