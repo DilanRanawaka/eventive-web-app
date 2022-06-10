@@ -15,7 +15,7 @@ import Paper from "@mui/material/Paper";
 import getUrl from "../../utils/routes";
 import axios from "axios";
 
-const AdminAdvisors = () => {
+const Contact = () => {
   const [list, setList] = useState([]);
 
   const getUserData = () => {
@@ -52,7 +52,7 @@ const AdminAdvisors = () => {
   };
 
   const getList = async () => {
-    Notiflix.Loading.standard("Loading Advises");
+    Notiflix.Loading.standard("Loading Questions");
 
     let isadmin = 2;
 
@@ -165,18 +165,18 @@ const AdminAdvisors = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
+                  {list.length === 0 && (
+                    <TableRow className="text-center">
+                      <TableCell className="text-danger" colSpan={4}>
+                        No Data Found
+                      </TableCell>
+                    </TableRow>
+                  )}
                   {list.map((item, index) => (
                     <TableRow
                       key={item._id}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
-                      {list.length === 0 && (
-                        <tr className="text-center">
-                          <td className="text-danger" colSpan={4}>
-                            No Data Found
-                          </td>
-                        </tr>
-                      )}
                       <TableCell component="th" scope="row">
                         {index + 1}
                       </TableCell>
@@ -256,4 +256,4 @@ const AdminAdvisors = () => {
   );
 };
 
-export default AdminAdvisors;
+export default Contact;

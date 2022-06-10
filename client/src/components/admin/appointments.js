@@ -14,7 +14,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-const Categories = () => {
+const Appointments = () => {
   const [list, setList] = useState([]);
   const [show, setShow] = useState(false);
   const [products, setProducts] = useState([]);
@@ -24,7 +24,7 @@ const Categories = () => {
   };
 
   const getList = async () => {
-    Notiflix.Loading.standard("Loading Categories");
+    Notiflix.Loading.standard("Loading Appointments");
 
     let isadmin = 2;
 
@@ -72,7 +72,7 @@ const Categories = () => {
                     <TableCell>No</TableCell>
                     <TableCell>Reference</TableCell>
                     <TableCell>Name/NIC</TableCell>
-                    <TableCell align="center">Total</TableCell>
+                    <TableCell align="right">Total</TableCell>
                     <TableCell align="center">Actions</TableCell>
                   </TableRow>
                 </TableHead>
@@ -86,7 +86,7 @@ const Categories = () => {
                         {index + 1}
                       </TableCell>
                       <TableCell>{item.ref}</TableCell>
-                      <TableCell>{item.name}</TableCell>
+                      <TableCell>User / 990980934V</TableCell>
                       <TableCell align="right">{item.total}</TableCell>
                       <TableCell align="center">
                         {" "}
@@ -143,7 +143,7 @@ const Categories = () => {
                 ))}
               </TableBody>
             </Table>
-          </TableContainer> 
+          </TableContainer>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
@@ -155,4 +155,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default Appointments;

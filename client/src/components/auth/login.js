@@ -1,6 +1,6 @@
 import { useState, React } from "react";
 import { Link } from "react-router-dom";
-import Notiflix from 'notiflix';
+import Notiflix from "notiflix";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
@@ -15,10 +15,9 @@ import {
 import getUrl from "../../utils/routes";
 import logo from "../../assets/images/Eventive.png";
 
-
 const Login = () => {
   const [data, setData] = useState({
-    nic: "",
+    email: "",
     password: "",
   });
 
@@ -32,7 +31,7 @@ const Login = () => {
     e.preventDefault();
     try {
       Notiflix.Loading.standard();
-      const { data: res } = await axios.post(getUrl("auth"), data );
+      const { data: res } = await axios.post(getUrl("auth"), data);
       Notiflix.Loading.remove();
       console.log(res.data.user);
       console.log(res.message);
@@ -65,16 +64,16 @@ const Login = () => {
             <h4 className="text-primary pb-5 pt-2"> Sign In</h4>
 
             <Form className="text-start" onSubmit={handleSubmit}>
-              <Form.Group className="mb-3" controlId="loginNICGroup">
-                <Form.Label>NIC</Form.Label>
+              <Form.Group className="mb-3" controlId="loginEmailGroup">
+                <Form.Label>Email</Form.Label>
                 <Form.Control
                   onChange={handleChange}
                   required
-                  maxLength={10}
-                  name="nic"
-                  value={data.nic}
+                  maxLength={50}
+                  name="email"
+                  value={data.email}
                   type="text"
-                  placeholder="Enter Your NIC"
+                  placeholder="Enter Your Email"
                 />
               </Form.Group>
 

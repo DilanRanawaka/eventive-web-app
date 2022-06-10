@@ -8,7 +8,7 @@ import Users from "./components/admin/users";
 import EventsList from "./components/eventslist";
 import Contact from "./components/admin/contact";
 import Packages from "./components/admin/packages";
-import Orders from "./components/admin/appointments";
+import Appointments from "./components/admin/appointments";
 import HomeSection from "./components/admin/home";
 import "./App.css";
 import "./bootstrap.css";
@@ -59,7 +59,7 @@ function App() {
           <Route path="/newpackages" element={<Packages />} />
         )}{" "}
       <Route path="/newpackages" element={<Packages />} />{" "}
-      <Route path="/admin/orders" element={<Orders />} />{" "}
+      <Route path="/admin/appointments" element={<Appointments />} />{" "}
     </Routes>
   );
 }

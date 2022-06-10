@@ -103,7 +103,7 @@ const Dashboard = () => {
       <Container fluid>
         <h3 className="text-dark  mt-5 mb-2 ml-5">Event Packages</h3>
         <h5 className="text-dark  ml-5 ">
-          Selct your event packages from here and apooint us in few steps
+          Selct your event packages from here and appoint us in few steps
         </h5>
 
         <Row className="justify-content-center mt-5">

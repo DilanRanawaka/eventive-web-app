@@ -10,18 +10,18 @@ const categoryRoutes = require("./routes/category");
 const eventRoutes = require("./routes/events");
 const eventEnrollRoutes = require("./routes/event_enroll");
 const questionRoutes = require("./routes/questions");
-const productRoutes = require("./routes/product");
-const orderRoutes = require("./routes/order");
+const packageRoutes = require("./routes/packages");
+const appointmentRoutes = require("./routes/appointments");
 
 connection();
 
 //middlewares
 app.use(express.json());
 app.use(
-    cors({
-        origin: "*",
-        methods: ['GET', 'POST']
-    })
+  cors({
+    origin: "*",
+    methods: ["GET", "POST"],
+  })
 );
 
 //routes bind
@@ -31,8 +31,8 @@ app.use("/api/category", categoryRoutes);
 app.use("/api/event", eventRoutes);
 app.use("/api/event_enroll", eventEnrollRoutes);
 app.use("/api/question", questionRoutes);
-app.use("/api/product", productRoutes);
-app.use("/api/order", orderRoutes);
+app.use("/api/product", packageRoutes);
+app.use("/api/order", appointmentRoutes);
 
 const port = process.env.PORT || 8003;
 app.listen(port, () => console.log("listning on port " + port));

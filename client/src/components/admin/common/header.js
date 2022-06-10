@@ -16,6 +16,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 import Notiflix from "notiflix";
 import axios from "axios";
@@ -88,7 +90,7 @@ const Header = () => {
             {getUserData().usertype === 3 && (
               <Nav.Link href="/packages">Packages</Nav.Link>
             )}
-             {getUserData().usertype === 3 && (
+            {getUserData().usertype === 3 && (
               <Nav.Link href="/eventslist">Events</Nav.Link>
             )}
 
@@ -109,7 +111,7 @@ const Header = () => {
                 <NavDropdown.Item href="/events">Events</NavDropdown.Item>
 
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/admin/orders">
+                <NavDropdown.Item href="/admin/appointments">
                   My appointments
                 </NavDropdown.Item>
 
@@ -208,33 +210,42 @@ const Header = () => {
 
       <Modal show={showPaymentModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Payment</Modal.Title>
+          <Modal.Title>One Last Step</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form.Group className="mb-3" controlId="ownerNameGroup">
-            <Form.Label>Owner Name</Form.Label>
-            <Form.Control required type="text" placeholder="Enter owner name" />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="cardNumberGroup">
-            <Form.Label>Card Number</Form.Label>
+          {/* <Form className="text-start" onSubmit={handleEnrollment}> */}
+          <Form.Group className="mb-3" controlId="startdatetimeGroup">
+            <Form.Label>Event Date & Time</Form.Label>
             <Form.Control
+              // onChange={handleChange}
               required
-              type="text"
-              placeholder="Enter card number"
+              name="startdatetime"
+              // value={data.startdatetime}
+              type="datetime-local"
+              placeholder="Enter event date and time"
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="cardYearGroup">
-            <Form.Label>Year</Form.Label>
-            <Form.Control required type="number" placeholder="Enter Year" />
+          <Form.Group className="mb-3" controlId="eventvenue">
+            <Form.Label>Venue/Event Location</Form.Label>
+            <Form.Control
+              // onChange={handleChange}
+              required
+              name="title"
+              // value={data.title}
+              type="text"
+              placeholder="Enter event location"
+            />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="cardMonthGroup">
-            <Form.Label>Month</Form.Label>
-            <Form.Control required type="text" placeholder="Enter month" />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="cvcGroup">
-            <Form.Label>CVC</Form.Label>
-            <Form.Control required type="text" placeholder="Enter cvc" />
-          </Form.Group>
+          {/* <Form/> */}
+          <Box sx={{ display: "flex" }} className="pt-2 justify-content-center">
+            <CircularProgress />
+          </Box>
+          <h6
+            sx={{ display: "flex" }}
+            className="py-4 d-flex justify-content-center"
+          >
+            PLEASE PAY THE AMMOUNT TO MAKE APPOINTMENT
+          </h6>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCheckoutClose}>
@@ -247,7 +258,10 @@ const Header = () => {
 
               Notiflix.Loading.standard("Payment Processing");
 
-              window.open("https://buy.stripe.com/test_bIYeWK5inb863U4aEE", "_blank");
+              window.open(
+                "https://buy.stripe.com/test_bIYeWK5inb863U4aEE",
+                "_blank"
+              );
 
               await axios.post(getUrl("addOrder"), {
                 cart: localStorage.getItem("cart"),
@@ -259,7 +273,7 @@ const Header = () => {
               getList();
             }}
           >
-            Pay
+            Proceed to Pay
           </Button>
         </Modal.Footer>
       </Modal>

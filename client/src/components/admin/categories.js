@@ -147,13 +147,13 @@ const Categories = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                {list.length === 0 && (
-                  <TableRow className="text-center">
-                    <TableCell className="text-danger" colSpan={4}>
-                      No Data Found
-                    </TableCell>
-                  </TableRow>
-                )}
+                  {list.length === 0 && (
+                    <TableRow className="text-center">
+                      <TableCell className="text-danger" colSpan={4}>
+                        No Data Found
+                      </TableCell>
+                    </TableRow>
+                  )}
                   {list.map((item, index) => (
                     <TableRow
                       key={item._id}
@@ -194,8 +194,6 @@ const Categories = () => {
                 </TableBody>
               </Table>
             </TableContainer>
-
-            
           </Col>
           <Col
             md={3}

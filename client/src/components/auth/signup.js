@@ -20,7 +20,7 @@ const Signup = () => {
     nic: "",
     email: "",
     password: "",
-    password_confirmation: ""
+    password_confirmation: "",
   });
 
   const [error, setError] = useState("");
@@ -35,14 +35,12 @@ const Signup = () => {
     e.preventDefault();
     try {
       console.log(data);
-      if(data.password_confirmation===data.password){
+      if (data.password_confirmation === data.password) {
         await axios.post(getUrl("users"), data);
         navigate("/login");
-      }else{
-        setError('Password and confirmation does not same');
+      } else {
+        setError("Password and confirmation does not same");
       }
-
-     
     } catch (error) {
       console.log(error);
       if (
@@ -114,7 +112,10 @@ const Signup = () => {
                   placeholder="Password"
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="loginPasswordConfirmationGroup">
+              <Form.Group
+                className="mb-3"
+                controlId="loginPasswordConfirmationGroup"
+              >
                 <Form.Label>Retype Password</Form.Label>
                 <Form.Control
                   onChange={handleChange}
@@ -125,6 +126,26 @@ const Signup = () => {
                   placeholder="Retype Password"
                 />
               </Form.Group>
+              <Form.Group className="mb-2" controlId="userRoleGroup">
+                <Form.Label>Select User Type -</Form.Label>
+                <Form.Check
+                  className="pl-3 align-middle"
+                  inline
+                  label="Customer"
+                  name="group1"
+                  type="radio"
+                  id="radio"
+                />
+                <Form.Check
+                  className="pl-3 align-middle"
+                  inline
+                  label="Vendor"
+                  name="group1"
+                  type="radio"
+                  id="radio"
+                />
+              </Form.Group>
+
               {error && (
                 <Alert key="danger" variant="danger">
                   {error}

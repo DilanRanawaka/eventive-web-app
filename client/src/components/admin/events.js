@@ -167,13 +167,13 @@ const Events = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                {list.length === 0 && (
-                  <TableRow className="text-center">
-                    <TableCell className="text-danger" colSpan={5}>
-                      No Data Found
-                    </TableCell>
-                  </TableRow>
-                )}
+                  {list.length === 0 && (
+                    <TableRow className="text-center">
+                      <TableCell className="text-danger" colSpan={5}>
+                        No Data Found
+                      </TableCell>
+                    </TableRow>
+                  )}
                   {list.map((item, index) => (
                     <TableRow
                       key={item._id}
@@ -224,8 +224,6 @@ const Events = () => {
                 </TableBody>
               </Table>
             </TableContainer>
-
-            
           </Col>
           <Col
             md={3}
@@ -317,29 +315,29 @@ const Events = () => {
             <Modal.Title>Paticipatients</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>NIC</th>
-                </tr>
-              </thead>
-              <tbody>
-                {list.length === 0 && (
-                  <tr className="text-center">
-                    <td className="text-danger" colSpan={2}>
-                      No Data Found
-                    </td>
-                  </tr>
-                )}
-                {paticipatients.map((item, index) => (
-                  <tr key={item._id}>
-                    <td>{index + 1}</td>
-                    <td>{item.nic}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 350 }} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>No</TableCell>
+                    <TableCell>NIC</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {paticipatients.map((item, index) => (
+                    <TableRow
+                      key={item._id}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row">
+                        {index + 1}
+                      </TableCell>
+                      <TableCell>{item.nic}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
           </Modal.Body>
           <Modal.Footer>
             <Button
